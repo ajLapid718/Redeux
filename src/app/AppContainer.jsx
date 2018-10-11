@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { setPlayerThunk } from '../thunks';
+import { setPlayerThunk, removePlayerThunk } from '../thunks';
 import { connect } from 'react-redux';
 import AppView from './AppView';
 
@@ -11,9 +11,10 @@ class AppContainer extends Component {
       firstName: "",
       lastName: ""
     }
+    this.blankState = this.state;
   }
 
-  handleChange = event => {
+  handleChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
   }
 
@@ -22,12 +23,20 @@ class AppContainer extends Component {
     this.props.setPlayer(this.state.lastName, this.state.firstName);
   }
 
+  handleReset = (event) => {
+    event.preventDefault();
+    this.props.removePlayer();
+    this.setState(this.blankState);
+  }
+
   render() {
     return (
       <AppView
         currentPlayer={this.props.currentPlayer}
         handleChange={this.handleChange}
         handleSubmit={this.handleSubmit}
+        handleReset={this.handleReset}
+        playerInfo={this.state}
       />
     );
   }
@@ -43,7 +52,8 @@ function mapState(state) {
 // Map dispatch to props;
 function mapDispatch(dispatch) {
   return {
-    setPlayer: (lastName, firstName) => dispatch(setPlayerThunk(lastName, firstName))
+    setPlayer: (lastName, firstName) => dispatch(setPlayerThunk(lastName, firstName)),
+    removePlayer: () => dispatch(removePlayerThunk())
   }
 }
 
