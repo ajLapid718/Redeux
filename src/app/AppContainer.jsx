@@ -5,15 +5,28 @@ import AppView from './AppView';
 
 // Smart container;
 class AppContainer extends Component {
-  handleSubmit = (lastName, firstName) => {
-    evt.preventDefault();
-    this.props.setPlayer(lastName, firstName);
+  constructor() {
+    super();
+    this.state = {
+      firstName: "",
+      lastName: ""
+    }
+  }
+
+  handleChange = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    this.props.setPlayer(this.state.lastName, this.state.firstName);
   }
 
   render() {
     return (
       <AppView
         currentPlayer={this.props.currentPlayer}
+        handleChange={this.handleChange}
         handleSubmit={this.handleSubmit}
       />
     );
