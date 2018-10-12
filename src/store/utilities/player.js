@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 // ACTION TYPES;
 const SET_PLAYER = "SET_PLAYER";
 const REMOVE_PLAYER = "REMOVE_PLAYER";
