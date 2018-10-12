@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { setPlayerThunk, removePlayerThunk } from '../thunks';
+import { setPlayer, removePlayer } from '../actions';
 import { connect } from 'react-redux';
 import AppView from './AppView';
 
@@ -52,8 +52,8 @@ function mapState(state) {
 // Map dispatch to props;
 function mapDispatch(dispatch) {
   return {
-    setPlayer: (lastName, firstName) => dispatch(setPlayerThunk(lastName, firstName)),
-    removePlayer: () => dispatch(removePlayerThunk())
+    setPlayer: (lastName, firstName) => dispatch(setPlayer(lastName, firstName)),
+    removePlayer: () => dispatch(removePlayer())
   }
 }
 
