@@ -6,7 +6,7 @@ import playerSagaWatcher from './player';
 
 // Root saga;
 function* rootSaga() {
-  yield playerSagaWatcher;
+  yield all([...playerSagaWatcher]);
 }
 
 // We then export the collective root saga to be ran elsewhere and used as middleware in our Redux store;

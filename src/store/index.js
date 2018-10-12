@@ -8,7 +8,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import * as reducers from '../reducers';
 
 // Root saga;
-import playerSagaWatcher from '../sagas/player';
+import rootSaga from '../sagas';
 
 // Create the saga middleware;
 const sagaMiddleware = createSagaMiddleware();
@@ -20,7 +20,7 @@ const middleware = composeWithDevTools(applyMiddleware(sagaMiddleware, logger));
 const store = createStore(rootReducer, middleware);
 
 // Run the saga;
-sagaMiddleware.run(playerSagaWatcher);
+sagaMiddleware.run(rootSaga);
 
 // Export our store by default, which will be provided to and injected within our entire application;
 export default store;
