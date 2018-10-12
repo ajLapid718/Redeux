@@ -1,6 +1,5 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 
-
 // export const setPlayerThunk = (lastName, firstName) => (dispatch) => {
 //   return axios
 //     .get(`https://nba-players.herokuapp.com/players-stats/${lastName}/${firstName}`)

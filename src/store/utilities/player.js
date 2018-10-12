@@ -1,6 +1,6 @@
 // ACTION TYPES;
-const SET_PLAYER = "SET_PLAYER";
-const REMOVE_PLAYER = "REMOVE_PLAYER";
+export const SET_PLAYER = "SET_PLAYER";
+export const REMOVE_PLAYER = "REMOVE_PLAYER";
 
 // ACTION CREATORS;
 export const setPlayer = (player) => {
