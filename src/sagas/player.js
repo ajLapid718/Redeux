@@ -1,4 +1,5 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
+import { SET_PLAYER, REMOVE_PLAYER, setPlayer, removePlayer } from '../actions';
 
 // export const setPlayerThunk = (lastName, firstName) => (dispatch) => {
 //   return axios
