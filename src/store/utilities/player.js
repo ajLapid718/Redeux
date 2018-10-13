@@ -1,9 +1,10 @@
-// ACTION TYPES;
+// ACTION TYPES (FOR ACTION CREATORS AND FOR WATCHER SAGAS);
 export const FETCH_PLAYER = "FETCH_PLAYER";
 export const REMOVE_PLAYER = "REMOVE_PLAYER";
 
-export const FETCH_PLAYER_SUCCESS = "FETCH_PLAYER_SUCCESS";
-export const REMOVE_PLAYER_SUCCESS = "REMOVE_PLAYER_SUCCESS";
+// ACTION TYPES (FOR ACTION CREATORS AND FOR THE REDUCER);
+const FETCH_PLAYER_SUCCESS = "FETCH_PLAYER_SUCCESS";
+const REMOVE_PLAYER_SUCCESS = "REMOVE_PLAYER_SUCCESS";
 
 // ACTION CREATORS (FOR COMPONENTS);
 // The actions in this section will be dispatched within a component and then will be picked up by the watcher saga, which will then boot up the corresponding worker saga;
