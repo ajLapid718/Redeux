@@ -1,3 +1,10 @@
+import axios from "axios";
+
+// ASYNCHRONOUS CALL FOR EPIC;
+export const getPlayer = (lastName, firstName) => {
+  return axios.get(`https://nba-players.herokuapp.com/players-stats/${lastName}/${firstName}`);
+};
+
 // ACTION TYPES (FOR ACTION CREATORS AND FOR AN EPIC);
 export const FETCH_PLAYER = "FETCH_PLAYER";
 export const REMOVE_PLAYER = "REMOVE_PLAYER";

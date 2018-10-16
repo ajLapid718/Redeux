@@ -3,9 +3,9 @@ import { combineReducers, applyMiddleware, createStore } from 'redux';
 import { createLogger } from 'redux-logger';
 
 import { createEpicMiddleware } from 'redux-observable';
-/* import epic(s) here
-const epicMiddleware = createEpicMiddleware(importedEpic);
-*/
+import { fetchPlayerEpic } from '../epics';
+
+const epicMiddleware = createEpicMiddleware(fetchPlayerEpic);
 
 import { composeWithDevTools } from 'redux-devtools-extension';
 
