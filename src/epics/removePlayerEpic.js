@@ -1,12 +1,7 @@
-import { REMOVE_PLAYER, removePlayer, removePlayerSuccess } from '../store/utilities/player';
-import { Observable } from 'rxjs/Rx';
+import { REMOVE_PLAYER, removePlayerSuccess } from '../store/utilities/player';
 
 const removePlayerEpic = action$ =>
   action$.ofType(REMOVE_PLAYER)
-    .mergeMap(action =>
-      Observable.fromPromise(removePlayer(action.lastName, action.firstName))
-        .map(response => removePlayerSuccess(response.data))
-        .catch(err => console.log(err))
-      )
+    .mapTo(removePlayerSuccess());
 
 export default removePlayerEpic;
