@@ -1,42 +1,37 @@
 import axios from 'axios';
 
+// ASYNCHRONOUS CALL;
+const getPlayer = (lastName, firstName) => {
+  return axios.get(`https://nba-players.herokuapp.com/players-stats/${lastName}/${firstName}`);
+}
+
 // ACTION TYPES;
-const SET_PLAYER = "SET_PLAYER";
+const FETCH_PLAYER = "FETCH_PLAYER";
 const REMOVE_PLAYER = "REMOVE_PLAYER";
 
+const FETCH_PLAYER_FULFILLED = "FETCH_PLAYER_FULFILLED";
+const REMOVE_PLAYER_FULFILLED = "REMOVE_PLAYER_FULFILLED";
+
 // ACTION CREATORS;
-const setPlayer = (player) => {
+export const fetchPlayer = (lastName, firstName) => {
   return {
-    type: SET_PLAYER,
-    payload: player
+    type: FETCH_PLAYER,
+    payload: getPlayer(lastName, firstName)
   }
 }
 
-const removePlayer = () => {
+export const removePlayer = () => {
   return {
     type: REMOVE_PLAYER
   }
 }
 
-// THUNK CREATORS;
-export const setPlayerThunk = (lastName, firstName) => (dispatch) => {
-  return axios
-    .get(`https://nba-players.herokuapp.com/players-stats/${lastName}/${firstName}`)
-    .then(res => res.data)
-    .then(nbaPlayer => dispatch(setPlayer(nbaPlayer)))
-    .catch(err => console.log(err));
-}
-
-export const removePlayerThunk = () => (dispatch) => {
-  return dispatch(removePlayer());
-}
-
 // REDUCER;
 export default (state = {}, action) => {
   switch (action.type) {
-    case SET_PLAYER:
+    case FETCH_PLAYER_FULFILLED:
       return action.payload;
-    case REMOVE_PLAYER:
+    case REMOVE_PLAYER_FULFILLED:
       return {};
     default:
       return state;
