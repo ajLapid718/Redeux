@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { setPlayerThunk, removePlayerThunk } from '../thunks';
+import { fetchPlayerThunk, removePlayerThunk } from '../thunks';
 import { connect } from 'react-redux';
 import AppView from './AppView';
 
@@ -20,7 +20,7 @@ class AppContainer extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.setPlayer(this.state.lastName, this.state.firstName);
+    this.props.fetchPlayer(this.state.lastName, this.state.firstName);
   }
 
   handleReset = (event) => {
@@ -52,7 +52,7 @@ function mapState(state) {
 // Map dispatch to props;
 function mapDispatch(dispatch) {
   return {
-    setPlayer: (lastName, firstName) => dispatch(setPlayerThunk(lastName, firstName)),
+    fetchPlayer: (lastName, firstName) => dispatch(fetchPlayerThunk(lastName, firstName)),
     removePlayer: () => dispatch(removePlayerThunk())
   }
 }
