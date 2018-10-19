@@ -1,8 +1,8 @@
 // Necessities and accessories for constructing our Redux store;
-import { combineReducers, applyMiddleware, createStore } from 'redux';
+import { applyMiddleware, createStore } from 'redux';
 import { createLogger } from 'redux-logger';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { install } from 'redux-loop';
+import { combineReducers, install } from 'redux-loop';
 
 // Individual reducers altogether under an alias;
 import * as reducers from '../reducers';
