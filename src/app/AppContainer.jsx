@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { fetchPlayer, removePlayer } from '../store/utilities/player';
+import { fetchPlayer, removePlayer } from '../actions';
 import { connect } from 'react-redux';
 import AppView from './AppView';
 
