@@ -10,7 +10,7 @@ import * as reducers from '../reducers';
 // Construct our Redux store;
 const rootReducer = combineReducers(reducers);
 const logger = createLogger({ collapsed: true});
-const middleware = composeWithDevTools(applyMiddleware(logger), install());
+const middleware = composeWithDevTools(install(), applyMiddleware(logger));
 const store = createStore(rootReducer, middleware);
 
 // Export our store by default, which will be provided to and injected within our entire application;

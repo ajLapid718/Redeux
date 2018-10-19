@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { fetchPlayerThunk, removePlayerThunk } from '../thunks';
 import { connect } from 'react-redux';
+import { fetchPlayer } from '../store/utilities/player';
 import AppView from './AppView';
 
 // Smart container;
@@ -52,8 +52,7 @@ function mapState(state) {
 // Map dispatch to props;
 function mapDispatch(dispatch) {
   return {
-    fetchPlayer: (lastName, firstName) => dispatch(fetchPlayerThunk(lastName, firstName)),
-    removePlayer: () => dispatch(removePlayerThunk())
+    fetchPlayer: (lastName, firstName) => dispatch(fetchPlayer(lastName, firstName))
   }
 }
 
