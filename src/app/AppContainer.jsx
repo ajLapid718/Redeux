@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchPlayer, removePlayerSuccess } from '../actions';
+import { fetchPlayer, removePlayer } from '../actions';
 import AppView from './AppView';
 
 // Smart container;
@@ -53,7 +53,7 @@ function mapState(state) {
 function mapDispatch(dispatch) {
   return {
     fetchPlayer: (lastName, firstName) => dispatch(fetchPlayer(lastName, firstName)),
-    removePlayer: () => dispatch(removePlayerSuccess())
+    removePlayer: () => dispatch(removePlayer())
   }
 }
 
