@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchPlayer } from '../store/utilities/player';
+import { fetchPlayer } from '../actions';
 import AppView from './AppView';
 
 // Smart container;
