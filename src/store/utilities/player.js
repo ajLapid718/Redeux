@@ -1,14 +1,22 @@
 import axios from 'axios';
+import { loop, Cmd } from 'redux-loop';
+
+// ASYNCRHONOUS CALL;
+const getPlayer = (lastName, firstName) => {
+  return axios.get(`https://nba-players.herokuapp.com/players-stats/${lastName}/${firstName}`);
+}
 
 // ACTION TYPES;
 const FETCH_PLAYER = "FETCH_PLAYER";
 const REMOVE_PLAYER = "REMOVE_PLAYER";
 
+const FETCH_PLAYER_SUCCESS = "FETCH_PLAYER_SUCCESS";
+const REMOVE_PLAYER_SUCCESS = "REMOVE_PLAYER_SUCCESS";
+
 // ACTION CREATORS;
-const fetchPlayer = (player) => {
+const fetchPlayer = () => {
   return {
-    type: FETCH_PLAYER,
-    payload: player
+    type: FETCH_PLAYER
   }
 }
 
@@ -18,25 +26,25 @@ const removePlayer = () => {
   }
 }
 
-// THUNK CREATORS;
-export const fetchPlayerThunk = (lastName, firstName) => (dispatch) => {
-  return axios
-    .get(`https://nba-players.herokuapp.com/players-stats/${lastName}/${firstName}`)
-    .then(res => res.data)
-    .then(nbaPlayer => dispatch(fetchPlayer(nbaPlayer)))
-    .catch(err => console.log(err));
+const fetchPlayerSuccess = (player) => {
+  return {
+    type: FETCH_PLAYER_SUCCESS,
+    payload: player
+  }
 }
 
-export const removePlayerThunk = () => (dispatch) => {
-  return dispatch(removePlayer());
+const removePlayerSuccess = () => {
+  return {
+    type: REMOVE_PLAYER_SUCCESS
+  }
 }
 
 // REDUCER;
 export default (state = {}, action) => {
   switch (action.type) {
-    case FETCH_PLAYER:
+    case FETCH_PLAYER_SUCCESS:
       return action.payload;
-    case REMOVE_PLAYER:
+    case REMOVE_PLAYER_SUCCESS:
       return {};
     default:
       return state;
