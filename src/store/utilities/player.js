@@ -24,11 +24,11 @@ export const fetchPlayer = (lastName, firstName) => {
   }
 }
 
-// const removePlayer = () => {
-//   return {
-//     type: REMOVE_PLAYER
-//   }
-// }
+const removePlayer = () => {
+  return {
+    type: REMOVE_PLAYER
+  }
+}
 
 const fetchPlayerSuccess = (player) => {
   return {
@@ -37,11 +37,11 @@ const fetchPlayerSuccess = (player) => {
   }
 }
 
-// const removePlayerSuccess = () => {
-//   return {
-//     type: REMOVE_PLAYER_SUCCESS
-//   }
-// }
+export const removePlayerSuccess = () => {
+  return {
+    type: REMOVE_PLAYER_SUCCESS
+  }
+}
 
 // REDUCER;
 export default (state = {}, action) => {
