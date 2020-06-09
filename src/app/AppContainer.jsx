@@ -6,6 +6,7 @@ import AppView from './AppView';
 // Smart container;
 class AppContainer extends Component {
   constructor() {
+    // console.log("constructor");
     super();
     this.state = {
       firstName: "",
@@ -20,6 +21,7 @@ class AppContainer extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+    console.log("props object", this.props);
     this.props.fetchPlayer(this.state.lastName, this.state.firstName);
   }
 
@@ -30,6 +32,7 @@ class AppContainer extends Component {
   }
 
   render() {
+    // console.log("in render");
     return (
       <AppView
         currentPlayer={this.props.currentPlayer}
@@ -44,6 +47,8 @@ class AppContainer extends Component {
 
 // Map state to props;
 function mapState(state) {
+  // console.log(state);
+  // console.log("from mapState");
   return {
     currentPlayer: state.currentPlayer
   }
@@ -51,6 +56,8 @@ function mapState(state) {
 
 // Map dispatch to props;
 function mapDispatch(dispatch) {
+  // console.log(dispatch);
+  // console.log("from mapDispatch");
   return {
     fetchPlayer: (lastName, firstName) => dispatch(fetchPlayerThunk(lastName, firstName)),
     removePlayer: () => dispatch(removePlayerThunk())

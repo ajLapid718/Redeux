@@ -23,7 +23,10 @@ export const fetchPlayerThunk = (lastName, firstName) => (dispatch) => {
   return axios
     .get(`https://nba-players.herokuapp.com/players-stats/${lastName}/${firstName}`)
     .then(res => res.data)
-    .then(nbaPlayer => dispatch(fetchPlayer(nbaPlayer)))
+    .then(nbaPlayer => {
+      console.log("about to dispatch action creator with data from api");
+      dispatch(fetchPlayer(nbaPlayer))
+    })
     .catch(err => console.log(err));
 }
 
@@ -32,6 +35,27 @@ export const removePlayerThunk = () => (dispatch) => {
 }
 
 // REDUCER;
+
+/*
+REDUX STORE:
+
+currentStudent: {},
+currentCampus: {},
+allStudents: [],
+allCampuses: []
+
+*/
+
+// The last output of the reducer function will be the value in the Redux store object
+// that corresponds to the appropriate key in the function that is returned by combineReducers;
+
+/*
+
+combineReducers:
+createStore:
+
+*/
+
 export default (state = {}, action) => {
   switch (action.type) {
     case FETCH_PLAYER:
