@@ -12,7 +12,9 @@ class TeamNamesContainer extends Component {
 
   componentDidMount() {
     console.log("didMount");
+    console.log("before props banana");
     this.props.banana();
+    console.log("after props banana")
   }
 
   render() {
@@ -31,7 +33,10 @@ function mapState(state) {
 function mapDispatch(dispatch) {
   console.log("mapDispatch");
   return {
-    banana: () => dispatch(fetchTeamNamesThunk())
+    banana: () => {
+      console.log("in banana")
+      dispatch(fetchTeamNamesThunk())
+    }
   }
 }
 
