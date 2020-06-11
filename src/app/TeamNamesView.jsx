@@ -1,7 +1,7 @@
 import React from "react";
 
 function TeamNamesView(props) {
-  return <h1>Hello from TeamsNameView</h1>;
+  return props.teamNames.map(teamName => <div key={teamName}>{teamName}</div>);
 }
 
 export default TeamNamesView;
