@@ -3,6 +3,8 @@ import { fetchPlayerThunk, removePlayerThunk } from '../thunks';
 import { connect } from 'react-redux';
 import AppView from './AppView';
 
+import TeamNamesContainer from "./TeamNamesContainer";
+
 // Smart container;
 class AppContainer extends Component {
   constructor() {
@@ -34,13 +36,16 @@ class AppContainer extends Component {
   render() {
     // console.log("in render");
     return (
-      <AppView
-        currentPlayer={this.props.currentPlayer}
-        handleChange={this.handleChange}
-        handleSubmit={this.handleSubmit}
-        handleReset={this.handleReset}
-        playerInfo={this.state}
-      />
+      <div>
+        <AppView
+          currentPlayer={this.props.currentPlayer}
+          handleChange={this.handleChange}
+          handleSubmit={this.handleSubmit}
+          handleReset={this.handleReset}
+          playerInfo={this.state}
+        />
+        <TeamNamesContainer />
+      </div>
     );
   }
 }
